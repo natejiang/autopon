@@ -10,10 +10,10 @@
 			http://www.springframework.org/schema/tx
             http://www.springframework.org/schema/tx/spring-tx.xsd
             http://www.springframework.org/schema/aop
-            http://www.springframework.org/schema/aop/spring-aop.xsd">	
-		
-		<!-- 配置DAO组件,并将SessiongFactory注入DAO组件 -->
-		<bean id="OLTInfoDao" class="try_everything.autopon.modules.dao.OLTInfoDaoHibernate4"
-			p:sessionFactory-ref="sessionFactory" />
+            http://www.springframework.org/schema/aop/spring-aop.xsd">
+				 
+		<!-- 配置Service组件,并将DAO组件注入Service组件 -->
+		<bean id="oLTInfoService" class="try_everything.autopon.modules.service.OLTInfoServiceImpl"
+			p:oLTInfoDao-ref="oLTInfoDao" />
 					 
 </beans>
