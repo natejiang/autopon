@@ -15,5 +15,7 @@
 		<!-- 配置DAO组件,并将SessiongFactory注入DAO组件 -->
 		<bean id="oLTInfoDao" class="try_everything.autopon.modules.dao.OLTInfoDaoHibernate4"
 			p:sessionFactory-ref="sessionFactory" />
+		<bean id="userDao" class="try_everything.autopon.modules.dao.UserDaoHibernate4"
+			p:sessionFactory-ref="sessionFactory" />
 					 
 </beans>

@@ -31,6 +31,7 @@
 			<property name="annotatedClasses">
 				<list>
 					<!-- 以下用来列出来所有的PO类 -->
+					<value>try_everything.autopon.modules.entity.User</value>
 					<value>try_everything.autopon.modules.entity.OLTInfo</value>
 				</list>
 			</property>
@@ -63,11 +64,13 @@
 		<aop:config>
 			<!-- 配置一个切入点 -->
 			<aop:pointcut id="myPointcut" expression="bean(oLtInfoService)" />
+			<aop:pointcut id="myPointcut2" expression="bean(userService)" />
 			<!-- 指定在myPointcut切入点应用txAdvice事务增强处理 -->
 			<aop:advisor advice-ref="txAdvice" pointcut-ref="myPointcut"/>
+			<aop:advisor advice-ref="txAdvice" pointcut-ref="myPointcut2"/>
 		</aop:config>
 		<!-- 配置Action及其依赖 -->		
-		
+		<import resource="actionContext.xml"/>
 		<!-- 配置Service组件,并将DAO组件注入Service组件 -->
 		<import resource="serviceContext.xml"/>
 		<!-- 配置DAO组件,并将SessiongFactory注入DAO组件 -->	 

@@ -10,6 +10,11 @@ public class UserServiceImpl implements UserService {
 	public void setUserDao(UserDao userDao) {
 		this.userDao = userDao;
 	}
+	
+	public UserDao getUserDao() {
+		return userDao;
+	}
+
 	@Override
 	public int addUser(User user) {
 		try
@@ -70,7 +75,11 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public int validLogin(User user) {
+		List<User> list = userDao.findByUsernameAndPassord(user);
+		if( list.size() > 0)
+		{
+			return 1;
+		}
 		return 0;
 	}
-
 }
