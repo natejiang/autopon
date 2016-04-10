@@ -6,14 +6,25 @@
 	
 	<constant name="struts.i18n.encoding" value="UTF-8"/>
 	
-	<package name="sys" extends="struts-default" namespace="/sys">	
+	<package name="sys" extends="struts-default" namespace="/views/sys">	
 		<interceptors>
 			<interceptor name = "authority"
 			class="try_everthing.autopon.modules.interceptor.AuthorityInterceptor" />
 		</interceptors>
 		<action name="*_*"  class="{1}Action" method="{2}">
 			<result name="error">/login.jsp</result>
-			<result name="success">/views/sys/index.jsp</result>		
+			<result name="success">index.jsp</result>		
+		</action>	
+	</package>
+	
+	<package name="login" extends="struts-default" namespace="/">
+		<interceptors>
+			<interceptor name = "authority"
+			class="try_everthing.autopon.modules.interceptor.AuthorityInterceptor" />
+		</interceptors>
+		<action name="*_*"  class="{1}Action" method="{2}">
+			<result name="error">/login.jsp</result>
+			<result name="success">views/sys/index.jsp</result>		
 		</action>	
 	</package>
 </struts>

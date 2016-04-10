@@ -32,7 +32,7 @@ public class LoginAction extends ActionSupport
 	}
 	public String validLogin() throws Exception
 	{
-		if (userService.validLogin(user)>0)
+		if (userService.validLogin(user) > 0)
 		{
 			ActionContext ctx = ActionContext.getContext();
 			ctx.getSession().put("username", user.getUsername());

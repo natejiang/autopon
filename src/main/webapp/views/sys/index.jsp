@@ -99,7 +99,7 @@
 							<h2 class="header">users</h2>
 							<div class="quick-press">
 								<h4>Quick Register</h4>
-								<form action="/autopon/sys/register_add" method="post">
+								<form action="register_add" method="post">
 									<input type="text" name="user.username" placeholder="username"/>
 									<input type="text" name="user.password" placeholder="password"/>
 									<input type="text" name="confirm"	placeholder="confirm"/>
