@@ -38,7 +38,7 @@ public class LoginAction extends ActionSupport
 			ctx.getSession().put("username", user.getUsername());
 			return SUCCESS;
 		}
-		return LOGIN;
+		return ERROR;
 	}
 	
 	public String logout() throws Exception

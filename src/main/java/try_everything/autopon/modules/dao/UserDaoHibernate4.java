@@ -24,10 +24,9 @@ public class UserDaoHibernate4  extends BaseDaoHibernate4<User> implements UserD
 	}
 
 	@Override
-	public List<User> findByUsernameAndPassord(User user) {
-		String hql = "select user from User user where user.username=" 
-				+ user.getUsername() + " and user.password=" + user.getPassword(); 
-		return find(hql);
+	public List<User> findByUsernameAndPassord(Class<User> entityClazz,String username,String password) {
+		String hql = "select en from " + entityClazz.getSimpleName() + " en" + " where en.username = ? and en.password = ?"; 
+		return find(hql,username,password);
 	}
 
 

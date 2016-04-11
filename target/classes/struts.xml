@@ -23,7 +23,7 @@
 			class="try_everthing.autopon.modules.interceptor.AuthorityInterceptor" />
 		</interceptors>
 		<action name="*_*"  class="{1}Action" method="{2}">
-			<result name="error">/login.jsp</result>
+			<result name="error">index.jsp</result>
 			<result name="success">views/sys/index.jsp</result>		
 		</action>	
 	</package>

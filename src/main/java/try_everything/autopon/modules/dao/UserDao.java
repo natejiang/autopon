@@ -15,5 +15,5 @@ public interface UserDao extends BaseDao<User> {
 	//分页获取实体按日期和时间排序
 	List<User> findByPageOrderByDate(Class<User> entityClazz,int pageNo,int pageSize);
 	
-	List<User> findByUsernameAndPassord(User user);
+	List<User> findByUsernameAndPassord(Class<User> entityClazz,String username,String password);
 }

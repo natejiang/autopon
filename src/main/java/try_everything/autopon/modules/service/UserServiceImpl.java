@@ -75,7 +75,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public int validLogin(User user) {
-		List<User> list = userDao.findByUsernameAndPassord(user);
+		List<User> list = userDao.findByUsernameAndPassord(User.class,user.getUsername(),user.getPassword());
 		if( list.size() > 0)
 		{
 			return 1;

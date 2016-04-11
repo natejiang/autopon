@@ -7,9 +7,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="user")
+@Table(name="oLTInfo")
 public class OLTInfo {
 	/**
+	 * OLT信息持久化类
 	 * @author Jiangnan
 	 * @since 2016-04-05
 	 */

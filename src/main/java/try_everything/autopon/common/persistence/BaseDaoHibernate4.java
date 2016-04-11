@@ -75,7 +75,7 @@ public class BaseDaoHibernate4<T> implements BaseDao<T> {
 		Query query = getSessionFactory().getCurrentSession().createQuery(hql);
 		for(int i = 0 , len = params.length ; i < len ; i ++)
 		{
-			query.setParameter(i + " ", params[i]);
+			query.setParameter(i, params[i]);
 		}
 		return (List<T>)query.list();
 	}	
@@ -110,7 +110,7 @@ public class BaseDaoHibernate4<T> implements BaseDao<T> {
 		//包含占位符的HQL语句设置参数
 		for(int i = 0 , len = params.length ; i < len ; i ++)
 		{
-			query.setParameter(i + " ", params[i]);
+			query.setParameter(i, params[i]);
 		}
 		//执行分页，并返回查询结果
 		return query.setFirstResult((pageNo - 1) * pageSize)
