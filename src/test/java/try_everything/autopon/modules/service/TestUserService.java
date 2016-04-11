@@ -28,7 +28,7 @@ public class TestUserService {
 		
 		User user = new User();  
 	    user.setUsername("jiangnan");
-	    user.setPassword("123");   
+	    user.setPassword("12345");   
 		System.out.println("是不否为真" + userService.validLogin(user));    
 			   
 

@@ -1,13 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <%@taglib prefix="s" uri="/struts-tags" %>
+<%
+String path = request.getContextPath();
+// 获得项目完全路径（假设你的项目叫MyApp，那么获得到的地址就是 http://localhost:8080/MyApp/）:
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE HTML>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>后台管理</title>
-	<script type="text/javascript" charset="UTF-8" src="js/prefixfree.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/base.css" media="all" />
-	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<script type="text/javascript" charset="UTF-8" src=" <%=basePath%>views/sys/js/prefixfree.min.js"></script>
+	<link rel="stylesheet" type="text/css" href=" <%=basePath%>views/sys/css/base.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="<%=basePath%>views/sys/css/style.css" />
 </head>
 <body>
 	<div class="page">
