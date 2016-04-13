@@ -1,13 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
-<%@taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE HTML>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>后台管理</title>
-	<script type="text/javascript" charset="UTF-8" src="js/prefixfree.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/base.css" media="all" />
-	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<script type="text/javascript" charset="UTF-8" src=" <%=basePath%>views/sys/js/prefixfree.min.js"></script>
+	<link rel="stylesheet" type="text/css" href=" <%=basePath%>views/sys/css/base.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="<%=basePath%>views/sys/css/style.css" />
 </head>
 <body>
 	<div class="page">
@@ -114,6 +118,19 @@
 						</div>
 						<div id="settings">
 							<h2 class="header">settings</h2>
+							<div class="quick-press">
+								<h4>OLT Register</h4>
+								<form action="register_add" method="post">
+									<input type="text" name="oLTInfo.name" placeholder="name"/>
+									<input type="text" name="oLTInfo.enname" placeholder="enname"/>
+									<input type="text" name="oLTInfo.firm"	placeholder="firm"/>
+									<input type="text" name="oLTInfo.model" placeholder="model"/>
+									<input type="text" name="oLTInfo.ip" placeholder="ip"/>
+									<button type="button" class="save">l</button>
+									<button type="button" class="delet">m</button>
+									<button type="submit" class="submit" name="submit">Submit</button>
+								</form>
+							</div>
 						</div>
 					</div>
 					<ul class="statusbar">

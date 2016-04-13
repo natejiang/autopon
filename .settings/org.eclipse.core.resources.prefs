@@ -1,6 +1,10 @@
 eclipse.preferences.version=1
+encoding//src/main/java/try_everything/autopon/modules/dao/UserDao.java=UTF-8
+encoding//src/main/java/try_everything/autopon/modules/entity/OLTInfo.java=UTF-8
+encoding//src/main/java/try_everything/autopon/modules/interceptor/AuthorityInterceptor.java=UTF-8
 encoding//src/main/webapp/css/base.css=UTF-8
 encoding//src/main/webapp/css/login.css=UTF-8
 encoding//src/main/webapp/index.jsp=UTF-8
+encoding//src/main/webapp/views/admin/equiadd.jsp=UTF-8
 encoding//src/main/webapp/views/sys/index.jsp=UTF-8
 encoding/<project>=UTF-8
