@@ -5,25 +5,14 @@
 <struts>
 	
 	<constant name="struts.i18n.encoding" value="UTF-8"/>
-	
-	<package name="sys" extends="struts-default" namespace="/views/sys">	
+		
+	<package name="admin" extends="struts-default" namespace="/views/admin">
 		<interceptors>
 			<interceptor name = "authority"
 			class="try_everthing.autopon.modules.interceptor.AuthorityInterceptor" />
 		</interceptors>
 		<action name="*_*"  class="{1}Action" method="{2}">
-			<result name="error">/login.jsp</result>
-			<result name="success">/login.jsp</result>		
-		</action>	
-	</package>
-	
-	<package name="login" extends="struts-default" namespace="/views/admin">
-		<interceptors>
-			<interceptor name = "authority"
-			class="try_everthing.autopon.modules.interceptor.AuthorityInterceptor" />
-		</interceptors>
-		<action name="*_*"  class="{1}Action" method="{2}">
-			<result name="error">login.html</result>
+			<result name="error">/index.jsp</result>
 			<result name="success">dashboard.jsp</result>		
 		</action>	
 	</package>

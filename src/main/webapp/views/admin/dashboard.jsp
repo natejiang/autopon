@@ -69,7 +69,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <a class="blueline"></a>
                         <a class="greenline"></a>
                         <a class="contrast"></a>
-                        <a class="custombg"></a>
                     </div>
                 </div><!--avatar-->
                 <div class="userdata">
@@ -312,7 +311,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         <ul class="entrylist">
                                               <li>
                                                 <div class="entry_wrap">
-                                                    <div class="entry_img"><img src="images/thumbs/image1.png" alt="" /></div>
+                                                    <div class="entry_img"><img src="views/admin/images/thumbs/image1.png" alt="" /></div>
                                                     <div class="entry_content">
                                                         <h4><a href="">Why Won't My Cat Eat?</a></h4>
                                                         <small>Submitted by: <a href=""><strong>Hiccup</strong></a> - June 10, 2012</small>
@@ -323,7 +322,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                               </li>
                                               <li class="even">
                                                 <div class="entry_wrap">
-                                                <div class="entry_img"><img src="images/thumbs/image2.png" alt="" /></div>
+                                                <div class="entry_img"><img src="views/admin/images/thumbs/image2.png" alt="" /></div>
                                                 <div class="entry_content">
                                                     <h4><a href="">We Are About Color</a></h4>
                                                     <small>Submitted by: <a href=""><strong>Hiccup</strong></a> - June 10, 2012</small>
@@ -334,7 +333,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                               </li>
                                               <li>
                                                 <div class="entry_wrap">
-                                                <div class="entry_img"><img src="images/thumbs/image3.png" alt="" /></div>
+                                                <div class="entry_img"><img src="views/admin/images/thumbs/image3.png" alt="" /></div>
                                                 <div class="entry_content">
                                                     <h4><a href="">Ancient Technology</a></h4>
                                                     <small>Submitted by: <a href=""><strong>Hiccup</strong></a> - June 10, 2012</small>
@@ -345,7 +344,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                               </li>
                                               <li class="even">
                                                 <div class="entry_wrap">
-                                                <div class="entry_img"><img src="images/thumbs/image4.png" alt="" /></div>
+                                                <div class="entry_img"><img src="views/admin/images/thumbs/image4.png" alt="" /></div>
                                                 <div class="entry_content">
                                                     <h4><a href="">Bird's Nest Soup</a></h4>
                                                     <small>Submitted by: <a href=""><strong>Hiccup</strong></a> - June 10, 2012</small>
@@ -429,28 +428,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <div class="widgetcontent userlistwidget nopadding">
                                 <ul>
                                     <li>
-                                        <div class="avatar"><img alt="" src="images/thumbs/avatar1.png" /></div>
+                                        <div class="avatar"><img alt="" src="views/admin/images/thumbs/avatar1.png" /></div>
                                         <div class="info">
                                             <a href="">Squint</a> <br />
                                             Front-End Engineer <br /> 18 minutes ago
                                         </div><!--info-->
                                     </li>
                                     <li>
-                                        <div class="avatar"><img alt="" src="images/thumbs/avatar2.png" /></div>
+                                        <div class="avatar"><img alt="" src="views/admin/images/thumbs/avatar2.png" /></div>
                                         <div class="info">
                                             <a href="">Eunice</a> <br />
                                             Architectural Designer <br /> 18 minutes ago
                                         </div><!--info-->
                                     </li>
                                     <li>
-                                        <div class="avatar"><img alt="" src="images/thumbs/avatar1.png" /></div>
+                                        <div class="avatar"><img alt="" src="views/admin/images/thumbs/avatar1.png" /></div>
                                         <div class="info">
                                             <a href="">Captain Gutt</a> <br />
                                             Software Engineer <br /> 18 minutes ago
                                         </div><!--info-->
                                     </li>
                                     <li>
-                                        <div class="avatar"><img alt="" src="images/thumbs/avatar2.png" /></div>
+                                        <div class="avatar"><img alt="" src="views/admin/images/thumbs/avatar2.png" /></div>
                                         <div class="info">
                                             <a href="">Flynn</a> <br />
                                             Accounting Manager <br /> 18 minutes ago

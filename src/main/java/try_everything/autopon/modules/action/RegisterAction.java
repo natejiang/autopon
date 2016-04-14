@@ -26,7 +26,7 @@ public class RegisterAction extends ActionSupport{
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
-	public String add()
+	public String addUser()
 	{
 		int result = userService.addUser(user);
 		if (result > 0)

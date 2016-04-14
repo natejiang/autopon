@@ -47,7 +47,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="nopassword">
 				<div class="loginmsg">Password</div>
                 <div class="loginf">
-                    <div class="thumb"><img alt="" src="images/thumbs/avatar1.png" /></div>
+                    <div class="thumb"><img alt="" src="views/admin/images/thumbs/avatar1.png" /></div>
                     <div class="userlogged">
                         <h4></h4>
                         <a href="index.html">Not <span></span>?</a> 
