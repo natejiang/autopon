@@ -12,27 +12,28 @@ public class OLTInfo {
 	/**
 	 * OLT信息持久化类
 	 * @author Jiangnan
-	 * @since 2016-04-05
+	 * @since 2016-04-15
 	 */
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int id;
-	String name;
+	String chname;
 	String enname;
-	String firm;
 	String model;
-	String ip;
+	String loginname;
+	String password;
+	String ipaddress;
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+	public String getChname() {
+		return chname;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setChname(String chname) {
+		this.chname = chname;
 	}
 	public String getEnname() {
 		return enname;
@@ -40,23 +41,30 @@ public class OLTInfo {
 	public void setEnname(String enname) {
 		this.enname = enname;
 	}
-	public String getFirm() {
-		return firm;
-	}
-	public void setFirm(String firm) {
-		this.firm = firm;
-	}
 	public String getModel() {
 		return model;
 	}
 	public void setModel(String model) {
 		this.model = model;
 	}
-	public String getIp() {
-		return ip;
+	public String getLoginname() {
+		return loginname;
 	}
-	public void setIp(String ip) {
-		this.ip = ip;
+	public void setLoginname(String loginname) {
+		this.loginname = loginname;
 	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getIpaddress() {
+		return ipaddress;
+	}
+	public void setIpaddress(String ipaddress) {
+		this.ipaddress = ipaddress;
+	}
+	
 
 }

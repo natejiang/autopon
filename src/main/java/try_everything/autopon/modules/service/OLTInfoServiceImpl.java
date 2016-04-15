@@ -8,7 +8,7 @@ import try_everything.autopon.modules.entity.OLTInfo;
 public class OLTInfoServiceImpl implements OLTInfoService{
 	/**
 	 * @author Jiangnan
-	 * @since 2016-04-06
+	 * @since 2016-04-15
 	 */
 	private OLTInfoDao oLTInfoDao;
 	
@@ -21,7 +21,7 @@ public class OLTInfoServiceImpl implements OLTInfoService{
 	}
 
 	@Override
-	public int addOLTInfo(OLTInfo oLTInfo) {
+	public int add(OLTInfo oLTInfo) {
 		try
 		{
 			return (Integer) oLTInfoDao.save(oLTInfo);
@@ -33,36 +33,7 @@ public class OLTInfoServiceImpl implements OLTInfoService{
 		}		
 		finally{}
 	}
-
-	@Override
-	public List<OLTInfo> findAllOrderByDate(Class<OLTInfo> oLTInfoClazz) {
-		try
-		{
-			return (List<OLTInfo>)oLTInfoDao.findAllOrderByDate(oLTInfoClazz);
-		}
-		catch(Exception ex)
-		{
-			ex.printStackTrace();
-			return null;
-		}
-		finally{}
-	}
-
-	@Override
-	public List<OLTInfo> findByPageOrderByDate(Class<OLTInfo> oLTInfoClazz,
-			int pageNo, int pageSize) {
-		try
-		{
-			return (List<OLTInfo>)oLTInfoDao.findByPageOrderByDate(oLTInfoClazz,pageNo,pageSize);
-		}
-		catch(Exception ex)
-		{
-			ex.printStackTrace();
-			return null;
-		}
-		finally{}
-	}
-
+	
 	@Override
 	public boolean deleteById(Integer id) throws Exception {
 		try
@@ -77,6 +48,36 @@ public class OLTInfoServiceImpl implements OLTInfoService{
 		}	
 		finally{}
 	}
+
+	@Override
+	public List<OLTInfo> findAllOrderById(Class<OLTInfo> oLTInfoClazz) {
+		try
+		{
+			return (List<OLTInfo>)oLTInfoDao.findAllOrderById(oLTInfoClazz);
+		}
+		catch(Exception ex)
+		{
+			ex.printStackTrace();
+			return null;
+		}
+		finally{}
+	}
+
+	@Override
+	public List<OLTInfo> findByPageOrderById(Class<OLTInfo> oLTInfoClazz,
+			int pageNo, int pageSize) {
+		try
+		{
+			return (List<OLTInfo>)oLTInfoDao.findByPageOrderById(oLTInfoClazz,pageNo,pageSize);
+		}
+		catch(Exception ex)
+		{
+			ex.printStackTrace();
+			return null;
+		}
+		finally{}
+	}
+
 
 
 }

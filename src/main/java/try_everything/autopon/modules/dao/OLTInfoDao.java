@@ -9,10 +9,11 @@ import try_everything.autopon.modules.entity.OLTInfo;
 public interface OLTInfoDao extends BaseDao<OLTInfo>{
 	/**
 	 * @author Jiangnan
-	 * @date 2016-04-12
+	 * @date 2016-04-15
 	 */
-	//»ñÈ¡ËùÓĞÊµÌå°´ÈÕÆÚºÍÊ±¼äÅÅĞò
-	List<OLTInfo> findAllOrderByDate(Class<OLTInfo> entityClazz);	
-	//·ÖÒ³»ñÈ¡ÊµÌå°´ÈÕÆÚºÍÊ±¼äÅÅĞò
-	List<OLTInfo> findByPageOrderByDate(Class<OLTInfo> entityClazz,int pageNo,int pageSize);
+	//è·å–æ‰€æœ‰å®ä½“æŒ‰æ—¥æœŸå’Œæ—¶é—´æ’åº
+	List<OLTInfo> findAllOrderById(Class<OLTInfo> entityClazz);	
+	//åˆ†é¡µè·å–å®ä½“æŒ‰æ—¥æœŸå’Œæ—¶é—´æ’åº
+	List<OLTInfo> findByPageOrderById(Class<OLTInfo> entityClazz,int pageNo,int pageSize);
+	
 }
