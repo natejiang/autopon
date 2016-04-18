@@ -7,8 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="oLTInfo")
-public class OLTInfo {
+@Table(name="oltInfo")
+public class OltInfo {
 	/**
 	 * OLT信息持久化类
 	 * @author Jiangnan
@@ -17,23 +17,23 @@ public class OLTInfo {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int id;
-	String chname;
-	String enname;
-	String model;
-	String loginname;
-	String password;
-	String ipaddress;
+	private String cnname;
+	private String enname;
+	private String model;
+	private String loginname;
+	private String password;
+	private String ipaddress;
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getChname() {
-		return chname;
+	public String getCnname() {
+		return cnname;
 	}
-	public void setChname(String chname) {
-		this.chname = chname;
+	public void setCnname(String chname) {
+		this.cnname = chname;
 	}
 	public String getEnname() {
 		return enname;

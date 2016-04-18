@@ -31,8 +31,8 @@
 			<property name="annotatedClasses">
 				<list>
 					<!-- 以下用来列出来所有的PO类 -->
-					<value>try_everything.autopon.modules.entity.User</value>
-					<value>try_everything.autopon.modules.entity.OLTInfo</value>
+					<value>try_everything.autopon.modules.entity.UserInfo</value>
+					<value>try_everything.autopon.modules.entity.OltInfo</value>
 				</list>
 			</property>
 			<!-- 定义HibernateSessionFactory属性 -->
@@ -40,7 +40,7 @@
 				<props>
 					<!-- 指定Hibernate的连接方言 -->
 					<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
-					<prop key="hibernate.hbm2ddl.auto">create</prop>
+					<prop key="hibernate.hbm2ddl.auto">update</prop>
 					<prop key="hibernate.show_sql">true</prop>
 					<prop key="hibernate.format_sql">true</prop>
 				</props>
@@ -63,8 +63,8 @@
 		<!-- AOP配置的元素 -->
 		<aop:config>
 			<!-- 配置一个切入点 -->
-			<aop:pointcut id="myPointcut" expression="bean(oLtInfoService)" />
-			<aop:pointcut id="myPointcut2" expression="bean(userService)" />
+			<aop:pointcut id="myPointcut" expression="bean(oltInfoService)" />
+			<aop:pointcut id="myPointcut2" expression="bean(userInfoService)" />
 			<!-- 指定在myPointcut切入点应用txAdvice事务增强处理 -->
 			<aop:advisor advice-ref="txAdvice" pointcut-ref="myPointcut"/>
 			<aop:advisor advice-ref="txAdvice" pointcut-ref="myPointcut2"/>

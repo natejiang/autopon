@@ -13,9 +13,9 @@
             http://www.springframework.org/schema/aop/spring-aop.xsd">	
 		
 		<!-- 配置DAO组件,并将SessiongFactory注入DAO组件 -->
-		<bean id="oLTInfoDao" class="try_everything.autopon.modules.dao.OLTInfoDaoHibernate4"
+		<bean id="oltInfoDao" class="try_everything.autopon.modules.dao.OltInfoDaoHibernate4"
 			p:sessionFactory-ref="sessionFactory" />
-		<bean id="userDao" class="try_everything.autopon.modules.dao.UserDaoHibernate4"
+		<bean id="userInfoDao" class="try_everything.autopon.modules.dao.UserInfoDaoHibernate4"
 			p:sessionFactory-ref="sessionFactory" />
 					 
 </beans>

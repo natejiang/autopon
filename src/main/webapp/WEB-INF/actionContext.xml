@@ -14,7 +14,9 @@
 			
 		<!-- 配置Action及其依赖 -->		
 		<bean id="loginAction" class="try_everything.autopon.modules.action.LoginAction"
-			p:userService-ref="userService" /> 
+			p:userInfoService-ref="userInfoService" /> 
 		<bean id="userInfoAction" class="try_everything.autopon.modules.action.UserInfoAction"
-			p:userService-ref="userService" /> 
+			p:userInfoService-ref="userInfoService" /> 
+		<bean id="oltInfoAction" class="try_everything.autopon.modules.action.OltInfoAction"
+			p:oltInfoService-ref="oltInfoService" /> 
 </beans>

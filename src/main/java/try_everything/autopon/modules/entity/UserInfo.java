@@ -7,8 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="user")
-public class User {
+@Table(name="userInfo")
+public class UserInfo {
 	/**
 	 * 持 久化类
 	 * @author Jiangnan

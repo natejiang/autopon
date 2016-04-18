@@ -13,9 +13,9 @@
             http://www.springframework.org/schema/aop/spring-aop.xsd">
 				 
 		<!-- 配置Service组件,并将DAO组件注入Service组件 -->
-		<bean id="oLTInfoService" class="try_everything.autopon.modules.service.OLTInfoServiceImpl"
-			p:oLTInfoDao-ref="oLTInfoDao" />
-		<bean id="userService" class="try_everything.autopon.modules.service.UserServiceImpl" 
-			p:userDao-ref="userDao"/>
+		<bean id="oltInfoService" class="try_everything.autopon.modules.service.OltInfoServiceImpl"
+			p:oltInfoDao-ref="oltInfoDao" />
+		<bean id="userInfoService" class="try_everything.autopon.modules.service.UserInfoServiceImpl" 
+			p:userInfoDao-ref="userInfoDao"/>
 					 
 </beans>

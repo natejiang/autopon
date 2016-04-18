@@ -3,8 +3,8 @@ package try_everything.autopon.modules.action;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-import try_everything.autopon.modules.entity.User;
-import try_everything.autopon.modules.service.UserService;
+import try_everything.autopon.modules.entity.UserInfo;
+import try_everything.autopon.modules.service.UserInfoService;
 
 public class LoginAction extends ActionSupport
 {
@@ -14,25 +14,29 @@ public class LoginAction extends ActionSupport
 	 * @since 2016-04-10
 	 */
 	private static final long serialVersionUID = 3449260016111628106L;
-	private User user;
-	private UserService userService;
+	private UserInfo user;
+	private UserInfoService userInfoService;
 
-	public User getUser() {
+
+	public UserInfo getUser() {
 		return user;
 	}
-	public void setUser(User user) {
+
+	public void setUser(UserInfo user) {
 		this.user = user;
 	}
 
-	public UserService getUserService() {
-		return userService;
+	public UserInfoService getUserInfoService() {
+		return userInfoService;
 	}
-	public void setUserService(UserService userService) {
-		this.userService = userService;
+
+	public void setUserInfoService(UserInfoService userInfoService) {
+		this.userInfoService = userInfoService;
 	}
+
 	public String validLogin() throws Exception
 	{
-		if (userService.validLogin(user) > 0)
+		if (userInfoService.validLogin(user) > 0)
 		{
 			ActionContext ctx = ActionContext.getContext();
 			ctx.getSession().put("username", user.getUsername());

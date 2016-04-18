@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
-import try_everything.autopon.modules.entity.User;
+import try_everything.autopon.modules.entity.UserInfo;
 
 public class TestUserService {
 	/**
@@ -15,18 +15,18 @@ public class TestUserService {
 	 */
 
 	ApplicationContext ctx = null;  
-	UserService userService = null;  
+	UserInfoService userService = null;  
 	
 	@Before  
 	public void beforeClass() {  
 	    ctx = new FileSystemXmlApplicationContext(  
 	            "classpath*:applicationContext.xml");  
-	    userService = (UserService) ctx.getBean("userService");  
+	    userService = (UserInfoService) ctx.getBean("userService");  
 	}  
 	@Test
 	public void testValidLogin() {
 		
-		User user = new User();  
+		UserInfo user = new UserInfo();  
 	    user.setUsername("jiangnan");
 	    user.setPassword("12345");   
 		System.out.println("是不否为真" + userService.validLogin(user));    

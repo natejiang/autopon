@@ -2,29 +2,29 @@ package try_everything.autopon.modules.service;
 
 import java.util.List;
 
-import try_everything.autopon.modules.dao.OLTInfoDao;
-import try_everything.autopon.modules.entity.OLTInfo;
+import try_everything.autopon.modules.dao.OltInfoDao;
+import try_everything.autopon.modules.entity.OltInfo;
 
-public class OLTInfoServiceImpl implements OLTInfoService{
+public class OltInfoServiceImpl implements OltInfoService{
 	/**
 	 * @author Jiangnan
 	 * @since 2016-04-15
 	 */
-	private OLTInfoDao oLTInfoDao;
+	private OltInfoDao oltInfoDao;
 	
-	public OLTInfoDao getoLTInfoDao() {
-		return oLTInfoDao;
+	public OltInfoDao getOltInfoDao() {
+		return oltInfoDao;
 	}
 
-	public void setoLTInfoDao(OLTInfoDao oLTInfoDao) {
-		this.oLTInfoDao = oLTInfoDao;
+	public void setOltInfoDao(OltInfoDao oltInfoDao) {
+		this.oltInfoDao = oltInfoDao;
 	}
 
 	@Override
-	public int add(OLTInfo oLTInfo) {
+	public int add(OltInfo oltInfo) {
 		try
 		{
-			return (Integer) oLTInfoDao.save(oLTInfo);
+			return (Integer) oltInfoDao.save(oltInfo);
 		}
 		catch(Exception ex)
 		{
@@ -38,7 +38,7 @@ public class OLTInfoServiceImpl implements OLTInfoService{
 	public boolean deleteById(Integer id) throws Exception {
 		try
 		{
-			oLTInfoDao.delete(OLTInfo.class,id);
+			oltInfoDao.delete(OltInfo.class,id);
 			return true;
 		}
 		catch(Exception ex)
@@ -50,10 +50,10 @@ public class OLTInfoServiceImpl implements OLTInfoService{
 	}
 
 	@Override
-	public List<OLTInfo> findAllOrderById(Class<OLTInfo> oLTInfoClazz) {
+	public List<OltInfo> findAllOrderById(Class<OltInfo> oltInfoClazz) {
 		try
 		{
-			return (List<OLTInfo>)oLTInfoDao.findAllOrderById(oLTInfoClazz);
+			return (List<OltInfo>)oltInfoDao.findAllOrderById(oltInfoClazz);
 		}
 		catch(Exception ex)
 		{
@@ -64,11 +64,11 @@ public class OLTInfoServiceImpl implements OLTInfoService{
 	}
 
 	@Override
-	public List<OLTInfo> findByPageOrderById(Class<OLTInfo> oLTInfoClazz,
+	public List<OltInfo> findByPageOrderById(Class<OltInfo> oltInfoClazz,
 			int pageNo, int pageSize) {
 		try
 		{
-			return (List<OLTInfo>)oLTInfoDao.findByPageOrderById(oLTInfoClazz,pageNo,pageSize);
+			return (List<OltInfo>)oltInfoDao.findByPageOrderById(oltInfoClazz,pageNo,pageSize);
 		}
 		catch(Exception ex)
 		{

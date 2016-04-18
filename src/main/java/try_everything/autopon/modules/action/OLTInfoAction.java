@@ -1,38 +1,46 @@
 package try_everything.autopon.modules.action;
 
-import java.util.TreeMap;
+import java.util.List;
 
-import try_everything.autopon.modules.entity.OLTInfo;
-import try_everything.autopon.modules.service.OLTInfoService;
+import try_everything.autopon.modules.entity.OltInfo;
+import try_everything.autopon.modules.service.OltInfoService;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class OLTInfoAction extends ActionSupport {
+public class OltInfoAction extends ActionSupport {
 
 	/**
 	 * @author Jiangnan
 	 * @since 2016-04-15
 	 */
 	private static final long serialVersionUID = 1L;
-	private OLTInfo oLTInfo;
-	private OLTInfoService oLTInfoService;
-	public OLTInfo getoLTInfo() {
-		return oLTInfo;
-	}
-	public void setoLTInfo(OLTInfo oLTInfo) {
-		this.oLTInfo = oLTInfo;
-	}
-	public OLTInfoService getoLTInfoService() {
-		return oLTInfoService;
-	}
-	public void setoLTInfoService(OLTInfoService oLTInfoService) {
-		this.oLTInfoService = oLTInfoService;
-	}
+	private OltInfo oltInfo;
+	private OltInfoService oltInfoService;
+	private int pageNo;
 	
+	
+	public OltInfo getOltInfo() {
+		return oltInfo;
+	}
+	public void setOltInfo(OltInfo oltInfo) {
+		this.oltInfo = oltInfo;
+	}
+	public OltInfoService getOltInfoService() {
+		return oltInfoService;
+	}
+	public void setOltInfoService(OltInfoService oltInfoService) {
+		this.oltInfoService = oltInfoService;
+	}
+	public int getPageNo() {
+		return pageNo;
+	}
+	public void setPageNo(int pageNo) {
+		this.pageNo = pageNo;
+	}
 	public String add()
 	{
-		int result = oLTInfoService.add(oLTInfo);
+		int result = oltInfoService.add(oltInfo);
 		if (result > 0)
 		{
 			return SUCCESS;
@@ -40,25 +48,41 @@ public class OLTInfoAction extends ActionSupport {
 		return ERROR;
 	}
 	public String deleteById() throws Exception
-	{
-		ActionContext ctx = ActionContext.getContext();
-		TreeMap<String, Object> Params =  (TreeMap<String, Object>) ctx.getParameters();
-		//返回值为数组
-		String[] ids = (String[]) Params.get("id");
-		for (int i = 0 ;i < ids.length ;i ++)
+	{		
+		boolean result =  oltInfoService.deleteById(oltInfo.getId());
+		if(result == true)
 		{
-			oLTInfoService.deleteById(Integer.parseInt(ids[0]));
-		}		
-		return "delete_success";			
+			return "delete_success";
+		}
+		return ERROR;
 	}
 	public String findAllOrderById()
 	{
-		return null;
+		List<OltInfo> list = oltInfoService.findAllOrderById(OltInfo.class);
+		ActionContext actionContext = ActionContext.getContext();
+		if (list != null && list.size() > 0)
+		{
+			actionContext.getParameters().put("oLTinfo", list);
+			actionContext.getParameters().put("size",list.size());
+			return SUCCESS;
+		}else
+		{
+			return ERROR;
+		}		
 	}
 	public String findAllByPageOrderById()
 	{
-		return null;
-	
+		List<OltInfo> list = oltInfoService.findByPageOrderById(OltInfo.class, pageNo, 10);
+		ActionContext actionContext = ActionContext.getContext();
+		if (list != null && list.size() > 0)
+		{
+			actionContext.getParameters().put("oLTinfo", list);
+			actionContext.getParameters().put("size",list.size());
+			return SUCCESS;
+		}else
+		{
+			return ERROR;
+		}
 	}
 	
 
