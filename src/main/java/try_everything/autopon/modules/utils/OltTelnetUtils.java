@@ -1,4 +1,4 @@
-package try_everything.autopon.common.utils;
+package try_everything.autopon.modules.utils;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -8,7 +8,7 @@ import java.util.Properties;
 
 import org.apache.commons.net.telnet.TelnetClient;
 
-public class TelnetUtils
+public class OltTelnetUtils
 {
 	/**
 	 * Telnet工具类
@@ -29,18 +29,19 @@ public class TelnetUtils
      * @param termtype  协议类型：VT100、VT52、VT220、VTNT、ANSI I 
      * @param prompt    结果结束标识
      */   
-    public TelnetUtils(String termtype,String prompt){  
+    public OltTelnetUtils(String termtype,String prompt){  
         telnet = new TelnetClient(termtype);  
         setPrompt(prompt);  
     }  
       
-    public TelnetUtils(String termtype){  
+    public OltTelnetUtils(String termtype){  
         telnet = new TelnetClient(termtype);  
     }  
       
-    public TelnetUtils(){  
+    public OltTelnetUtils(){  
         telnet = new TelnetClient();  
     }  
+    
 	public void setIp(String ip) {
 		this.ip = ip;
 	}
@@ -90,7 +91,7 @@ public class TelnetUtils
         } catch (Exception e) {  
             e.printStackTrace();  
         }  
-    }  
+    }   
     
     public String readUntil(String pattern) {  
         StringBuffer sb = new StringBuffer();  
