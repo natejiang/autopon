@@ -1,5 +1,7 @@
 package try_everything.autopon.modules.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,6 +25,7 @@ public class OltInfo {
 	private String loginname;
 	private String password;
 	private String ipaddress;
+	private List<Integer> vlanList;  //OLT业务板配置VLAN信息
 	public int getId() {
 		return id;
 	}
@@ -65,6 +68,11 @@ public class OltInfo {
 	public void setIpaddress(String ipaddress) {
 		this.ipaddress = ipaddress;
 	}
+	public List<Integer> getVlanList() {
+		return vlanList;
+	}
+	public void setVlanList(List<Integer> vlanList) {
+		this.vlanList = vlanList;
+	}
 	
-
 }

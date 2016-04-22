@@ -1,6 +1,7 @@
 package try_everything.autopon.modules.utils;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
@@ -8,31 +9,27 @@ import java.util.Properties;
 
 import org.apache.commons.net.telnet.TelnetClient;
 
+import try_everything.autopon.modules.entity.OltInfo;
+
 public class OltTelnetUtils
 {
 	/**
 	 * Telnet工具类
 	 * @author Jiangnan
-	 * @since 2016-04-20
+	 * @since 2016-04-23
 	 */
-	private String ip;
-	private int port;
-	private String username;
-	private String password;
+	private OltInfo oltInfo;
 	private String prompt; 
 	private char promptChar;              //结束标志字符
+	private String errorLoginFeedback;  //登陆错误反馈
     private TelnetClient telnet;  
     private InputStream in;     
     private PrintStream out;   
     
     /** 
+     * 带参数构造器
      * @param termtype  协议类型：VT100、VT52、VT220、VTNT、ANSI I 
-     * @param prompt    结果结束标识
      */   
-    public OltTelnetUtils(String termtype,String prompt){  
-        telnet = new TelnetClient(termtype);  
-        setPrompt(prompt);  
-    }  
       
     public OltTelnetUtils(String termtype){  
         telnet = new TelnetClient(termtype);  
@@ -42,28 +39,28 @@ public class OltTelnetUtils
         telnet = new TelnetClient();  
     }  
     
-	public void setIp(String ip) {
-		this.ip = ip;
-	}
-    public void setPrompt(String prompt) {  
-        if(prompt!=null){  
-            this.prompt = prompt;   
-        }  
-    }  
-    /** 
-     * 初始化参数
-     */ 
-    public void initParam(String paramFile)  throws Exception
-   	{
-   		Properties props = new Properties();
-   		props.load(new FileInputStream(paramFile));   
-   		port =Integer.parseInt(props.getProperty("port"));
-   		username = props.getProperty("username");
-   		password = props.getProperty("password");
+	/** 
+     * 注入OltInfo,并初始化参数
+     */
+    
+    public void setOltInfo(OltInfo oltInfo) {
+		this.oltInfo = oltInfo;
+		Properties props = new Properties();
+		String paramFile = "OltTelnetUtils_params_" + oltInfo.getModel() + ".properties";
+   		try {
+			props.load(new FileInputStream(paramFile));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			System.out.println("目标文件不存在");
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.out.println("文件无法读取");
+		}   
    		prompt = props.getProperty("prompt");
    		promptChar = prompt.charAt(prompt.length() - 1); 
-   		
-   	}
+   		errorLoginFeedback = props.getProperty("error_login");
+	}
+
     /** 
      * 登录到目标主机
      * @param ip 
@@ -74,16 +71,16 @@ public class OltTelnetUtils
     public void login(){  
         try 
         {	
-        	telnet.connect(ip, port);  
+        	telnet.connect(oltInfo.getIpaddress(), 23);  
             in = telnet.getInputStream();  
             out = new PrintStream(telnet.getOutputStream());  
             System.out.println(readUntil("Username:")); 
-            write(username);  
+            write(oltInfo.getLoginname());  
             System.out.println(readUntil("Password:"));  
-            write(password);  
+            write(oltInfo.getPassword());  
             String resultStr = readUntil(prompt); 
             System.out.println(resultStr);
-            if(resultStr!=null&&resultStr.contains("No username or bad password")){  
+            if(resultStr!=null&&resultStr.contains(errorLoginFeedback)){  
                 throw new RuntimeException("登陆失败");  
             }  
         }catch (RuntimeException e){

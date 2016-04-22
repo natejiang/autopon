@@ -1,57 +1,64 @@
 package try_everything.autopon.modules.service;
 
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.net.telnet.TelnetClient;
 
 import try_everything.autopon.modules.entity.OltInfo;
 import try_everything.autopon.modules.entity.OnuInfo;
+import try_everything.autopon.modules.utils.OltTelnetUtils;
+
+/**
+ * ZTE OLT service实现类
+ * @author Jiangnan
+ * @since 2016-04-23
+ */
 
 public class OltEquipServiceZte implements OltEquipService<OnuInfo>{
-	/**
-	 * Huawei Olt
-	 * @author Jiangnan
-	 * @since 2016-04-20
-	 */
-	private OltInfo oltInfo;
-	private String prompt = "#";              //结束标志字符
+
+	private OltTelnetUtils oltTelnetUtils;
 	
-	public void setOltInfo(OltInfo oltInfo) {
-		this.oltInfo = oltInfo;
+	public OltTelnetUtils getOltTelnetUtils() {
+		return oltTelnetUtils;
 	}
 
-	@Override
-	public void login() {
-		try 
-        {	
-			TelnetClient telnetClient = new TelnetClient(); 
-        	telnetClient.connect(oltInfo.getIpaddress(), 23);  
-            InputStream in = telnetClient.getInputStream();  
-            OutputStream out = new PrintStream(telnetClient.getOutputStream());  
-            System.out.println(readUntil("Username:")); 
-            write(username);  
-            System.out.println(readUntil("Password:"));  
-            write(password);  
-            String resultStr = readUntil(prompt); 
-            System.out.println(resultStr);
-            if(resultStr!=null&&resultStr.contains("No username or bad password")){  
-                throw new RuntimeException("登陆失败");  
-            }  
-        }catch (RuntimeException e){
-        	System.out.println("登陆失败");
-        } catch (Exception e) {  
-            e.printStackTrace();  
-        }  
-		
-		
+	public void setOltTelnetUtils(OltTelnetUtils oltTelnetUtils) {
+		this.oltTelnetUtils = oltTelnetUtils;
 	}
 
+	/**
+	 * 获取OLT中未配置ONU列表
+	 * @param oltInfo 
+	 */
 	@Override
-	public List<OnuInfo> getOnuList() {
-		// TODO Auto-generated method stub
+	public List<OnuInfo> getOnuList(OltInfo oltInfo) {
+		List<OnuInfo> onuList = new ArrayList<OnuInfo>(); 
+		oltTelnetUtils.setOltInfo(oltInfo);
+		oltTelnetUtils.login();
+		String resultStr = oltTelnetUtils.sendCommand("show gpon onu uncfg","#");
+		Pattern p1 = Pattern.compile("\\d/\\d/\\d");                        //正则表达式匹配interface
+    	Matcher m1 = p1.matcher(resultStr);
+    	Pattern p2 = Pattern.compile("ZTE\\w{9}");                          //正则表达式匹配ONT序列号
+    	Matcher m2 = p2.matcher(resultStr);
+    	while(m1.find() && m2.find())
+    	{
+    		/**
+    		 * 获取vlan采用约定方式，server_info.txt文件中vlan排列顺序为板位排列顺序。
+    		 */
+    		String[] cardidArr = m1.group().split("/");
+    		int cardid = Integer.parseInt(cardidArr[1]);
+    		String vlan = vlanArr[cardid-2];   //OLT业务板起始于2号板
+    	      		
+    		HashMap<String, String> onuHas = new HashMap<String, String>();
+    		onuHas.put("onuinterface",m1.group());
+    		onuHas.put("sn", m2.group());
+    		onuHas.put("ip", ip);
+    		onuHas.put("vlan", vlan);
+    		onuArr.add(onuHas);
+    	}
+    	to.distinct();
+		
+		
 		return null;
 	}
 
