@@ -1,5 +1,11 @@
 package try_everything.autopon.modules.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,6 +29,11 @@ public class OltInfo {
 	private String loginname;
 	private String password;
 	private String ipaddress;
+	@ElementCollection(targetClass=Integer.class)
+	@CollectionTable(name="vlan_info",
+		joinColumns=@JoinColumn(name="id",nullable=false))
+	@Column(name="vlan_id")
+	private List<Integer> vlanIdList = new ArrayList<>();  //OLT业务板配置VLAN信息
 	public int getId() {
 		return id;
 	}
@@ -65,6 +76,5 @@ public class OltInfo {
 	public void setIpaddress(String ipaddress) {
 		this.ipaddress = ipaddress;
 	}
-	
 
 }
