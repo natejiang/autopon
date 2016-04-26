@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.JoinColumn;
 
 @Entity
 @Table(name="oltInfo")
@@ -75,6 +76,12 @@ public class OltInfo {
 	}
 	public void setIpaddress(String ipaddress) {
 		this.ipaddress = ipaddress;
+	}
+	public List<Integer> getVlanIdList() {
+		return vlanIdList;
+	}
+	public void setVlanIdList(List<Integer> vlanIdList) {
+		this.vlanIdList = vlanIdList;
 	}
 
 }
